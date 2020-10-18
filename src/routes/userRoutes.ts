@@ -11,9 +11,12 @@ class UserRoutes implements IRouter {
   }
 
   public routes(): void {
-    this.router.route('/').get(UserController.all);
-
-    this.router.route('/').post(UserController.add);
+    this.router.route('/').get(UserController.all).post(UserController.add);
+    this.router
+      .route('/:id')
+      .get(UserController.byId)
+      .put(UserController.update)
+      .delete(UserController.delete);
   }
 }
 
