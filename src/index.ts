@@ -24,10 +24,6 @@ class App {
   }
 
   protected routes(): void {
-    this.app.route('/').get((req: Request, res: Response): void => {
-      res.send('Hi');
-    });
-
     this.app.use('/users', userRoutes);
   }
 }
