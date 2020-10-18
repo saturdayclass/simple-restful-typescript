@@ -4,6 +4,8 @@ import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
 
+import userRoutes from './routes/userRoutes';
+
 class App {
   public app: Application;
 
@@ -26,10 +28,7 @@ class App {
       res.send('Hi');
     });
 
-    this.app.route('/').post((req: Request, res: Response): void => {
-      res.send(req.body);
-      console.log(req.body);
-    });
+    this.app.use('/users', userRoutes);
   }
 }
 

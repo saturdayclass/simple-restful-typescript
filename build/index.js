@@ -8,6 +8,7 @@ var morgan_1 = __importDefault(require("morgan"));
 var compression_1 = __importDefault(require("compression"));
 var helmet_1 = __importDefault(require("helmet"));
 var cors_1 = __importDefault(require("cors"));
+var userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 var App = /** @class */ (function () {
     function App() {
         this.app = express_1.default();
@@ -25,10 +26,7 @@ var App = /** @class */ (function () {
         this.app.route('/').get(function (req, res) {
             res.send('Hi');
         });
-        this.app.route('/').post(function (req, res) {
-            res.send(req.body);
-            console.log(req.body);
-        });
+        this.app.use('/users', userRoutes_1.default);
     };
     return App;
 }());
