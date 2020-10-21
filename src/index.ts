@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import userRoutes from './routes/userRoutes';
+import authRoutes from './routes/AuthRoutes';
 
 class App {
   public app: Application;
@@ -24,7 +25,8 @@ class App {
   }
 
   protected routes(): void {
-    this.app.use('/users', userRoutes);
+    this.app.use('/api/v1/users', userRoutes);
+    this.app.use('/api/v1/auth', authRoutes);
   }
 }
 
