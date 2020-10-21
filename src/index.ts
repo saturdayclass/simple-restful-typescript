@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
+import { config as dotenv, config } from 'dotenv';
 
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/AuthRoutes';
@@ -14,6 +15,7 @@ class App {
     this.app = express();
     this.plugins();
     this.routes();
+    dotenv();
   }
 
   protected plugins(): void {
@@ -30,9 +32,8 @@ class App {
   }
 }
 
-const port = 8000;
 const app = new App().app;
 
-app.listen(port, (): void => {
-  console.log(`Server berjalan di port ${port}`);
+app.listen(process.env.PORT || 8000, (): void => {
+  console.log(`Server berjalan di port ${process.env.PORT}`);
 });
